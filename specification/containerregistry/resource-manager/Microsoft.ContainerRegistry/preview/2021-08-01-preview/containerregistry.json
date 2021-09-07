@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "2021-06-01-preview",
+    "version": "2021-08-01-preview",
     "title": "ContainerRegistryManagementClient"
   },
   "host": "management.azure.com",
@@ -1536,6 +1536,61 @@
         }
       }
     },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/refreshDelegatedResourceIdentity": {
+      "post": {
+        "tags": [
+          "Registries"
+        ],
+        "description": "Refresh delegated resource identities for the specified container registry.",
+        "operationId": "Registries_RefreshDelegatedResourceIdentity",
+        "parameters": [
+          {
+            "$ref": "#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceGroupParameter"
+          },
+          {
+            "$ref": "#/parameters/RegistryNameParameter"
+          },
+          {
+            "name": "refreshDelegatedResourceIdentityParameters",
+            "in": "body",
+            "description": "The parameters for refreshing delegated resource identity.",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/RefreshDelegatedResourceIdentityParameters"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The delegated resource identities and credentials refreshed successfully."
+          },
+          "202": {
+            "description": "The request was successful; the operation will complete asynchronously."
+          },
+          "400": {
+            "description": "One or more source resources are invalid for the requested container registry."
+          },
+          "403": {
+            "description": "Caller not authorized for action."
+          },
+          "404": {
+            "description": "Backing container registry was not found."
+          }
+        },
+        "x-ms-examples": {
+          "RefreshDelegatedResourceIdentity": {
+            "$ref": "./examples/RefreshDelegatedResourceIdentity.json"
+          }
+        },
+        "x-ms-long-running-operation": true
+      }
+    },
     "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerRegistry/registries/{registryName}/replications": {
       "get": {
         "tags": [
@@ -2769,6 +2824,13 @@
             "$ref": "#/definitions/StatusDetailProperties"
           },
           "readOnly": true
+        },
+        "notifyImageList": {
+          "description": "The list of notification image subscription information for the connected registry.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -3006,6 +3068,13 @@
           "items": {
             "type": "string"
           }
+        },
+        "notifyImageList": {
+          "description": "The list of notification image subscription information for the connected registry.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
@@ -3102,6 +3171,13 @@
           "additionalProperties": {
             "$ref": "#/definitions/UserIdentityProperties"
           }
+        },
+        "delegatedResources": {
+          "description": "The list of delegated resources associated with the resource. The delegated resources\r\ndictionary key references will be internal ids of the delegated resources.\r\nThis is an internal-only property bag, and can only be configured by source Resource Providers.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/DelegatedResource"
+          }
         }
       }
     },
@@ -3165,6 +3241,31 @@
         }
       }
     },
+    "DelegatedResource": {
+      "description": "Resource delegated to the container registry",
+      "type": "object",
+      "properties": {
+        "resourceId": {
+          "description": "The resource id of the delegated resource",
+          "type": "string"
+        },
+        "tenantId": {
+          "description": "AAD tenant GUID of the delegated resource identity",
+          "type": "string"
+        },
+        "referralResource": {
+          "description": "The delegation id of the delegation relationship",
+          "type": "string"
+        },
+        "delegatedIdentities": {
+          "description": "The accessible delegated identitites. \r\nKey: Identity resourceId. A wildcard \"*\" stands for all identities. Value: DelegatedIdentity.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/DelegatedIdentity"
+          }
+        }
+      }
+    },
     "ExportPipelineTargetProperties": {
       "description": "The properties of the export pipeline target.",
       "required": [
@@ -3185,6 +3286,11 @@
           "type": "string"
         }
       }
+    },
+    "DelegatedIdentity": {
+      "description": "Empty object by design.",
+      "type": "object",
+      "properties": {}
     },
     "ImportImageParameters": {
       "required": [
@@ -4694,6 +4800,22 @@
           "x-ms-enum": {
             "name": "PasswordName",
             "modelAsString": false
+          }
+        }
+      }
+    },
+    "RefreshDelegatedResourceIdentityParameters": {
+      "description": "The parameters used to refresh delegated resource identity.",
+      "required": [
+        "sourceResourceInternalIds"
+      ],
+      "type": "object",
+      "properties": {
+        "sourceResourceInternalIds": {
+          "description": "Specifies internal Ids of the source resources whose delegated identity credentials shold be refreshed.",
+          "type": "array",
+          "items": {
+            "type": "string"
           }
         }
       }
