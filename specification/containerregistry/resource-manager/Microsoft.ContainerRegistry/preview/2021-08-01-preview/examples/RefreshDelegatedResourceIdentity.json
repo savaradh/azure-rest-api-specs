@@ -1,0 +1,36 @@
+{
+  "parameters": {
+    "api-version": "2021-08-01-preview",
+    "subscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resourceGroupName": "myResourceGroup",
+    "registryName": "myRegistry",
+    "refreshDelegatedResourceIdentityParameters": {
+      "sourceResourceInternalIds": [
+        "00000000-0000-0000-0000-000000000001",
+        "00000000-0000-0000-0000-000000000002"
+      ]
+    }
+  },
+  "responses": {
+    "200": {},
+    "202": {},
+    "400": {
+      "body": {
+        "code": "400",
+        "message": "One or more source resources are invalid for the requested container registry."
+      }
+    },
+    "403": {
+      "body": {
+        "code": "403",
+        "message": "Caller not authorized for action."
+      }
+    },
+    "404": {
+      "body": {
+        "code": "403",
+        "message": "Backing container registry was not found."
+      }
+    }
+  }
+}
