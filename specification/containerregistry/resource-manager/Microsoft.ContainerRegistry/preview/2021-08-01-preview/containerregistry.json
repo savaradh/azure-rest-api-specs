@@ -3258,7 +3258,7 @@
           "type": "string"
         },
         "delegatedIdentities": {
-          "description": "The accessible delegated identitites. \r\nKey: Identity resourceId. A wildcard \"*\" stands for all identities. Value: DelegatedIdentity.",
+          "description": "The accessible delegated identites. \r\nKey: Identity resourceId. A wildcard \"*\" stands for all identities. Value: DelegatedIdentity.",
           "type": "object",
           "additionalProperties": {
             "$ref": "#/definitions/DelegatedIdentity"
@@ -4812,7 +4812,7 @@
       "type": "object",
       "properties": {
         "sourceResourceInternalIds": {
-          "description": "Specifies internal Ids of the source resources whose delegated identity credentials shold be refreshed.",
+          "description": "Specifies internal Ids of the source resources whose delegated identity credentials should be refreshed.",
           "type": "array",
           "items": {
             "type": "string"
