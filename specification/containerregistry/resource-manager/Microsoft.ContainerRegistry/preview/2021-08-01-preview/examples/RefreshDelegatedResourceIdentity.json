@@ -14,23 +14,8 @@
   "responses": {
     "200": {},
     "202": {},
-    "400": {
-      "body": {
-        "code": "400",
-        "message": "One or more source resources are invalid for the requested container registry."
-      }
-    },
-    "403": {
-      "body": {
-        "code": "403",
-        "message": "Caller not authorized for action."
-      }
-    },
-    "404": {
-      "body": {
-        "code": "403",
-        "message": "Backing container registry was not found."
-      }
-    }
+    "400": {},
+    "403": {},
+    "404": {}
   }
 }

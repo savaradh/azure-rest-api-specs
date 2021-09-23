@@ -3258,7 +3258,7 @@
           "type": "string"
         },
         "delegatedIdentities": {
-          "description": "The accessible delegated identites. \r\nKey: Identity resourceId. A wildcard \"*\" stands for all identities. Value: DelegatedIdentity.",
+          "description": "The accessible delegated identities. \r\nKey: Identity resourceId. A wildcard \"*\" stands for all identities. Value: DelegatedIdentity.",
           "type": "object",
           "additionalProperties": {
             "$ref": "#/definitions/DelegatedIdentity"
