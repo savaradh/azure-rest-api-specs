@@ -14,7 +14,7 @@
             "name": "myConnectedRegistry",
             "type": "Microsoft.ContainerRegistry/registries/connectedRegistries",
             "properties": {
-              "mode": "Registry",
+              "mode": "ReadWrite",
               "activation": {
                 "status": "Inactive"
               },

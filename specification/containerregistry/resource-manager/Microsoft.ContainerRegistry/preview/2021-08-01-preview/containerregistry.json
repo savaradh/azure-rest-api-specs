@@ -2758,6 +2758,8 @@
         "mode": {
           "description": "The mode of the connected registry resource that indicates the permissions of the registry.",
           "enum": [
+            "ReadWrite",
+            "ReadOnly",
             "Registry",
             "Mirror"
           ],

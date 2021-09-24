@@ -7,7 +7,7 @@
     "connectedRegistryName": "myConnectedRegistry",
     "connectedRegistryCreateParameters": {
       "properties": {
-        "mode": "Registry",
+        "mode": "ReadWrite",
         "parent": {
           "syncProperties": {
             "tokenId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myRegistry/tokens/syncToken",
@@ -33,7 +33,7 @@
         "name": "myConnectedRegistry",
         "type": "Microsoft.ContainerRegistry/registries/connectedRegistries",
         "properties": {
-          "mode": "Registry",
+          "mode": "ReadWrite",
           "activation": {
             "status": "Inactive"
           },
@@ -65,7 +65,7 @@
         "name": "myConnectedRegistry",
         "type": "Microsoft.ContainerRegistry/registries/connectedRegistries",
         "properties": {
-          "mode": "Registry",
+          "mode": "ReadWrite",
           "activation": {
             "status": "Inactive"
           },
