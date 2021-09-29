@@ -13,7 +13,7 @@
         "name": "myConnectedRegistry",
         "type": "Microsoft.ContainerRegistry/registries/connectedRegistries",
         "properties": {
-          "mode": "Registry",
+          "mode": "ReadWrite",
           "activation": {
             "status": "Inactive"
           },
@@ -32,7 +32,7 @@
             "logLevel": "Information",
             "auditLogStatus": "Disabled"
           },
-          "notifyImageList": [
+          "notificationsList": [
             "hello-world:*:*",
             "sample/repo/*:1.0:*"
           ]
